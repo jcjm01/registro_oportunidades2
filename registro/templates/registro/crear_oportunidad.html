@@ -1,10 +1,70 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Crear Nueva Oportunidad</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Guardar Oportunidad</button>
-  </form>
+<style>
+    form > div {
+        margin-bottom: 15px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    input, select, textarea {
+        width: 100%;
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+    button {
+        padding: 10px 15px;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<h2>Crear Nueva Oportunidad</h2>
+<form method="post">
+  {% csrf_token %}
+  <div>
+    <label for="id_nombre">Nombre:</label>
+    {{ form.nombre }}
+  </div>
+  <div>
+    <label for="id_descripcion">Descripción:</label>
+    {{ form.descripcion }}
+  </div>
+  <div>
+    <label for="id_fecha_inicio">Fecha de Inicio:</label>
+    {{ form.fecha_inicio }}
+  </div>
+  <div>
+    <label for="id_fecha_cierre_estimada">Fecha de Cierre Estimada:</label>
+    {{ form.fecha_cierre_estimada }}
+  </div>
+  <div>
+    <label for="id_monto">Monto:</label>
+    {{ form.monto }}
+  </div>
+  <div>
+    <label for="id_correo_electronico">Correo Electrónico:</label>
+    {{ form.correo_electronico }}
+  </div>
+  <div>
+    <label for="id_numero_telefonico">Número Telefónico:</label>
+    {{ form.numero_telefonico }}
+  </div>
+  <div>
+    <label for="id_productos">Productos:</label>
+    {{ form.productos }}
+  </div>
+
+  <button type="submit">Guardar Oportunidad</button>
+</form>
 {% endblock %}

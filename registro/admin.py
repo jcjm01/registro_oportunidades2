@@ -12,9 +12,13 @@ admin.site.register(Producto, ProductoAdmin)
 
 # Configuración de administración para Oportunidad (si es aplicable)
 class OportunidadAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'fecha_inicio', 'fecha_cierre_estimada', 'monto')  # Ajusta según tu modelo Oportunidad
+    list_display = ('nombre', 'fecha_inicio', 'fecha_cierre_estimada', 'monto', 'mostrar_productos')  # Ajusta según tu modelo Oportunidad y añade 'mostrar_productos'
     list_filter = ('fecha_inicio', 'fecha_cierre_estimada')  # Ejemplo de filtros
     search_fields = ('nombre', 'descripcion')  # Habilita la búsqueda por nombre y descripción
 
-# Registra el modelo Oportunidad con la configuración de OportunidadAdmin (si tienes este modelo)
+    def mostrar_productos(self, obj):
+      return ", ".join ([producto.nombre for producto in obj.productos.all()])
+    mostrar_productos.short_description = "Productos Asociados"
+
+# Registra el modelo Oportunidad con la configuración de OportunidadAdmin
 admin.site.register(Oportunidad, OportunidadAdmin)
