@@ -27,7 +27,7 @@ def crear_oportunidad(request):
                 'Nueva Oportunidad Registrada',
                 contenido_correo,
                 settings.EMAIL_HOST_USER,
-                ['carlos.jimenez@nephosit.com','juan_carlos_jimenez@outlook.com'],  # Reemplaza con los correos reales de los destinatarios
+                ['carlos.jimenez@nephosit.com'],  # Reemplaza con los correos reales de los destinatarios
                 fail_silently=False,
             )
             return redirect('gracias')
